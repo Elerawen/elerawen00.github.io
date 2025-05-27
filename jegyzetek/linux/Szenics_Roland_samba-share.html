@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Szenics_Roland_samba-share.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="samba-megoszt%C3%A1s-%C3%A9s-be%C3%A1ll%C3%ADt%C3%A1sai--szenics-roland">Samba megosztás és beállításai | Szenics Roland</h1>
+<h1 id="tartalomjegyz%C3%A9k">Tartalomjegyzék</h1>
+<ul>
+<li><a href="#samba-%C3%A9s-sz%C3%BCks%C3%A9ges-csomagok-telep%C3%ADt%C3%A9se">samba és szükséges csomagok telepítése</a></li>
+<li><a href="#felhaszn%C3%A1l%C3%B3k-%C3%A9s-csoportok-be%C3%A1ll%C3%ADt%C3%A1sa">felhasználók és csoportok beállítása</a></li>
+<li><a href="#beado-%C3%A9s-kiado-mappa-l%C3%A9trehoz%C3%A1sa-%C3%A9s-be%C3%A1ll%C3%ADt%C3%A1sa">&quot;beado&quot; és &quot;kiado&quot; mappa létrehozása és beállítása</a></li>
+<li><a href="#f%C3%A1jlrendszer-jogosults%C3%A1g-kezel%C3%A9se">fájlrendszer jogosultság kezelése</a></li>
+<li><a href="#samba-felhaszn%C3%A1l%C3%B3k-kezel%C3%A9se">samba felhasználók kezelése</a></li>
+<li><a href="#megosztott-mappa-csatol%C3%A1sa-windows-%C3%A9s-linux-rendszeren">megosztott mappa csatolása Windows és Linux rendszeren</a>
+<ul>
+<li><a href="#windowson">Windowson:</a></li>
+<li><a href="#linuxon">Linuxon:</a></li>
+</ul>
+</li>
+<li><a href="#fstab-haszn%C3%A1lata-credentials-f%C3%A1jl-seg%C3%ADts%C3%A9g%C3%A9vel">FSTAB használata (credentials fájl segítségével)</a>
+<ul>
+<li><a href="#credentials-f%C3%A1jl-l%C3%A9trehoz%C3%A1sa">credentials fájl létrehozása</a></li>
+<li><a href="#mountol%C3%A1s">mountolás</a></li>
+</ul>
+</li>
+<li><a href="#sourceslist-haszn%C3%A1lata-t%C3%BCkr%C3%B6k-keres%C3%A9se-%C3%A9s-be%C3%A1ll%C3%ADt%C3%A1sa">Sources.list használata tükrök keresése és beállítása</a></li>
+</ul>
+<h2 id="samba-%C3%A9s-sz%C3%BCks%C3%A9ges-csomagok-telep%C3%ADt%C3%A9se">samba és szükséges csomagok telepítése</h2>
+<p>kezdésnek írjuk át az <code>/etc/hosts</code> fájlt</p>
+<pre class="hljs"><code><div>...
+szerver_ip_cime     szerver_hosztneve
+</div></code></pre>
+<p>pl:</p>
+<pre class="hljs"><code><div>192.168.0.103      debianszr
+</div></code></pre>
+<p>telepitsuk a szükséges csomagokat</p>
+<pre class="hljs"><code><div>apt install samba cifs-utils -y
+</div></code></pre>
+<h2 id="felhaszn%C3%A1l%C3%B3k-%C3%A9s-csoportok-be%C3%A1ll%C3%ADt%C3%A1sa">felhasználók és csoportok beállítása</h2>
+<p>hozzunk létre <code>sambauser</code> és <code>sambaadmin</code> felhasználókat</p>
+<pre class="hljs"><code><div>sudo adduser sambauser
+sudo adduser sambaadmin
+</div></code></pre>
+<p>a <code>sambaadmin</code>-t adjuk hozzá a <code>sambauser</code> csoporthoz:</p>
+<pre class="hljs"><code><div>sudo usermod -aG sambauser sambaadmin
+</div></code></pre>
+<h2 id="%22beado%22-%C3%A9s-%22kiado%22-mappa-l%C3%A9trehoz%C3%A1sa-%C3%A9s-be%C3%A1ll%C3%ADt%C3%A1sa">&quot;beado&quot; és &quot;kiado&quot; mappa létrehozása és beállítása</h2>
+<pre class="hljs"><code><div>sudo mkdir /beado
+sudo mkdir /kiado
+</div></code></pre>
+<h2 id="f%C3%A1jlrendszer-jogosults%C3%A1g-kezel%C3%A9se">fájlrendszer jogosultság kezelése</h2>
+<p>állítsuk át a tulajdonost <code>sambaadmin</code>-ra és adjuk hozzá a <code>sambauser</code> csoportot a mappákhoz</p>
+<pre class="hljs"><code><div>sudo chown sambaadmin:sambauser /kiado
+sudo chown sambaadmin:sambauser /beado
+</div></code></pre>
+<p>adjuk jogot a <code>kiado</code> és <code>beado</code> mappáknak</p>
+<pre class="hljs"><code><div>sudo chmod 755 /kiado
+sudo chmod 733 /beado
+</div></code></pre>
+<p><code>755</code>: tulaj tud mindent, csoport csak olvasni és futtatni, mindenki más csak olvasni és futtatni<br>
+<code>733</code>: tulaj tud mindent, csoport csak írni és futtatni, mindenki más csak írni és futtatni</p>
+<p>majd módosítsuk az <code>/etc/samba/smb.conf</code> fájlt, és a legvégére írjuk be ezt:</p>
+<pre class="hljs"><code><div>[kiado]
+comment = Kiado
+path = /kiado
+read only = no
+browsable = yes
+valid user = @sambauser
+
+[beado]
+comment = Beado
+path = /beado
+read only = no
+browsable = no
+valid users = @sambauser
+</div></code></pre>
+<h2 id="samba-felhaszn%C3%A1l%C3%B3k-kezel%C3%A9se">samba felhasználók kezelése</h2>
+<p>adjuk hozzá a sambahoz a felhasználóinkat</p>
+<pre class="hljs"><code><div>sudo smbpasswd -a sambauser
+sudo smbpasswd -a sambaadmin
+</div></code></pre>
+<p>indítsuk újra a Samba-t</p>
+<pre class="hljs"><code><div>sudo systemctl restart smbd.service
+</div></code></pre>
+<h2 id="megosztott-mappa-csatol%C3%A1sa-windows-%C3%A9s-linux-rendszeren">megosztott mappa csatolása Windows és Linux rendszeren</h2>
+<h4 id="windowson">Windowson:</h4>
+<p>Windows számítógépen nyissunk egy fájlkezelőt és az &quot;Ez a gép&quot;-et kikeresve kattintsunk rá jobb klikkel, majd &quot;Hálózati meghajtó csatlakoztatása...&quot; gombra kattintsunk rá:<br><br></p>
+<p><img src="https://gist.github.com/user-attachments/assets/1b21dc29-79b7-4b1b-b540-074525f241fb" alt="image"><br>
+majd írjuk be az ábrán látható módon az elérési útvonalat (<code>\\szerver-ip-cime\megadott-nev</code>)
+<img src="https://gist.github.com/user-attachments/assets/e1b2601d-2a0c-4bd6-9a9b-35ce427a14b7" alt="image-1"><br>
+írjuk be a hitelesítő adataink (sambauser / sambaadmin) és teszteljük le mindkét felhasználót<br>
+ha mindent jól csináltunk <code>sambaadmin</code> felhasználóval tudnunk kéne olvasni, módosítani és futtatni is a <code>kiado</code> mappába, míg <code>sambauser</code>-nél csak olvasni és futtatni</p>
+<h4 id="linuxon">Linuxon:</h4>
+<pre class="hljs"><code><div>sudo mount -t cifs -o vers=3.0,username=sambauser,password=Passw0rd //192.168.0.103/beado /mnt/beado
+sudo mount -t cifs -o vers=3.0,username=sambauser,password=Passw0rd //192.168.0.103/beado /mnt/kiado
+</div></code></pre>
+<h2 id="fstab-haszn%C3%A1lata-credentials-f%C3%A1jl-seg%C3%ADts%C3%A9g%C3%A9vel">FSTAB használata (credentials fájl segítségével)</h2>
+<h4 id="credentials-f%C3%A1jl-l%C3%A9trehoz%C3%A1sa">credentials fájl létrehozása</h4>
+<p>hozzunk létre egy <code>credentials</code> fájlt valahova</p>
+<pre class="hljs"><code><div>sudo nano /etc/samba/credentials
+</div></code></pre>
+<p>és írjuk bele ezt:</p>
+<pre class="hljs"><code><div>username=sambaadmin
+password=Passw0rd
+</div></code></pre>
+<p>mentsük le és lépjünk ki<br>
+majd adjunk jogosultságot neki:</p>
+<pre class="hljs"><code><div>sudo chmod 600 /etc/samba/credentials
+</div></code></pre>
+<h4 id="mountol%C3%A1s">mountolás</h4>
+<p>első lépésnek hozzunk létre két mappát a <code>/mnt/</code> -ban:</p>
+<pre class="hljs"><code><div>sudo mkdir /mnt/kiado
+sudo mkdir /mnt/beado
+</div></code></pre>
+<p>változtassuk meg a tulajdonost és adjunk neki minden jogot:</p>
+<pre class="hljs"><code><div>sudo chown sambaadmin:sambaadmin /mnt/kiado
+sudo chown sambaadmin:sambaadmin /mnt/beado
+
+sudo chmod 770 /mnt/kiado
+sudo chmod 770 /mnt/beado
+</div></code></pre>
+<p>nyissuk meg az <code>/etc/fstab</code> fájlt és adjuk hozzá ezt a két sort:</p>
+<pre class="hljs"><code><div>//192.168.0.103/beado /mnt/beado cifs vers=3.0,crendentials=/etc/samba/credentials,_netdev 0 0
+//192.168.0.103/kiado /mnt/kiado cifs vers=3.0,credentials=/etc/samba/credentials,_netdev 0 0
+</div></code></pre>
+<p><code>_netdev</code> -re azért van szükség, hogy miután internetet kapott a gépünk, azután csatolja fel a két meghajtót</p>
+<h2 id="sourceslist-haszn%C3%A1lata-t%C3%BCkr%C3%B6k-keres%C3%A9se-%C3%A9s-be%C3%A1ll%C3%ADt%C3%A1sa">Sources.list használata tükrök keresése és beállítása</h2>
+<p>tükröket az <a href="https://wiki.debian.org/SourcesList">alábbi linken</a> lehet találni<br>
+ha megvan melyiket szeretnék használni akkor csak másoljuk bele <code>sources.list</code> -et fájlba</p>
+<pre class="hljs"><code><div>sudo nano /etc/apt/sources.list
+</div></code></pre>
+<hr>
+© Szenics Roland
+</body>
+</html>
